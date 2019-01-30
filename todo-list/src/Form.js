@@ -48,7 +48,7 @@ export default class Form extends Component {
                     </input>
                 </div>
                 <Button
-                    calssName="ui primary button"
+                    className="ui primary button"
                     onClick={this.handleClick}
                     text="Add"
                 >

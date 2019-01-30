@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import List from './List';
 import Form from './Form';
-// import Button from './Button';
 
 export default class Todo extends Component {
 
@@ -13,6 +12,7 @@ export default class Todo extends Component {
     this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handelSubmit = this.handelSubmit.bind(this);
+    this.markDone = this.markDone.bind(this);
   }
 
   handleChange = (event) => {
@@ -28,7 +28,16 @@ export default class Todo extends Component {
     });
   }
 
+  markDone = (index) => {
+    const { todoList } = this.state;
+    
+        this.setState({
 
+          todoList: todoList.filter((character, i) => { 
+                return i !== index;
+            })
+        });
+  }
 
   render() {
     const { todoList } = this.state;
@@ -42,7 +51,7 @@ export default class Todo extends Component {
 
           </div>
           <div className="ui horizontal divider"><h4 className="ui header">Todo Items</h4></div>
-          <List list={todoList}></List>
+          <List onClick ={this.markDone} list={todoList}></List>
         </div>
       </div>
     );
