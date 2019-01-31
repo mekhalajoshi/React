@@ -44,6 +44,11 @@ export default class Form extends Component {
                         placeholder='Add todo Item'
                         value={item}
                         onChange={this.handleChange}
+                        onKeyPress= {event => {
+                            if (event.key === "Enter") {
+                                this.handleClick();
+                            }
+                          }}
                     >
                     </input>
                 </div>
