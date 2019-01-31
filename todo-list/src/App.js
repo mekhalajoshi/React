@@ -8,11 +8,13 @@ export default class Todo extends Component {
     super(props);
     this.initialState = {
       todoList: [],
+      completedList: [],
     };
     this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handelSubmit = this.handelSubmit.bind(this);
     this.markDone = this.markDone.bind(this);
+    this.moveToTodo = this.moveToTodo.bind(this);
   }
 
   handleChange = (event) => {
@@ -28,19 +30,33 @@ export default class Todo extends Component {
     });
   }
 
-  markDone = (index) => {
+  markDone = (index, item) => {
     const { todoList } = this.state;
-    
-        this.setState({
 
-          todoList: todoList.filter((character, i) => { 
-                return i !== index;
-            })
-        });
+    this.setState({
+      completedList: [...this.state.completedList, item],
+      todoList: todoList.filter((character,i) => {
+        return i !== index;
+      }),
+      
+    });
   }
 
+  moveToTodo = (index, item) => {
+    const {  completedList } = this.state;
+
+    this.setState({
+      todoList: [...this.state.todoList, item],
+      completedList: completedList.filter((character,i) => {
+        return i !== index;
+      }),
+      
+    });
+  }
+  
+
   render() {
-    const { todoList } = this.state;
+    const { todoList, completedList } = this.state;
     return (
       <div className=' ui container'>
         <div className=' ui segment'>
@@ -48,10 +64,17 @@ export default class Todo extends Component {
           <div className="ui divider"></div>
           <div>
             <Form handelSubmit={this.handelSubmit} ></Form>
-
           </div>
-          <div className="ui horizontal divider"><h4 className="ui header">Todo Items</h4></div>
-          <List onClick ={this.markDone} list={todoList}></List>
+          <div>
+            <div className="ui horizontal divider"><h4 className="ui header">Todo Items</h4></div>
+            <List buttonText='Done' onClick={this.markDone} list={todoList}></List>
+          </div>
+
+          <div>
+            <div className="ui horizontal divider"><h4 className="ui header">Completed Items</h4></div>
+            <List buttonText='Move to Todo' onClick={this.moveToTodo} list={completedList}></List>
+          </div>
+
         </div>
       </div>
     );

@@ -4,17 +4,17 @@ export default class List extends Component {
 
    
     render() {
-        const { onClick, list } = this.props;
+        const { onClick, list, buttonText } = this.props;
         if ({ list }) {
             return (
                 <div >
-                    <ul  Style="list-style-type:none;" >{list.map((item,index) =>
+                    <ul  Style={"list-style-type:none"} >{list.map((item,index) =>
                         <li  key={index}>
                             
 
 
-                                <div class="ui left labeled button">
-                                <Button onClick = {()=>onClick(index)} className="ui green button" text = "Done"></Button>
+                                <div className="ui left labeled button">
+                                <Button onClick = {()=>onClick(index,item)} className="ui green button" text ={buttonText}></Button>
                                 <h3 className ="ui basic label">{item}</h3>
                                 </div>
                                 
