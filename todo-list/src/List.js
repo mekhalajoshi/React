@@ -9,7 +9,7 @@ export default class List extends Component {
             return (
                 <div >
                     <ul  Style={"list-style-type:none"} >{list.map((item,index) =>
-                        <li  key={index}>
+                        <li  key={'item_'+index}>
                             
 
 
