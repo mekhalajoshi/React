@@ -26,7 +26,7 @@ export default class Calculator extends Component {
     evaluate = () => {
         this.setState({result : math.eval(this.state.equation)});
     }
-
+ 
     
     
     addToEquation= (val) => {
