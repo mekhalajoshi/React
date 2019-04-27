@@ -20,28 +20,75 @@ export default class Calculator extends Component {
             result:''
         };
         this.addToEquation = this.addToEquation.bind(this);
-        this.evaluate = this.evaluate.bind(this);
+        this.handleEquals = this.handleEquals.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
-    evaluate = () => {
-        this.setState({result : math.eval(this.state.equation)});
+    handleEquals = () => {
+        const eq = this.state.equation;
+        let answer = this.makeValid(this.state.equation);
+        
+        this.setState({
+            result : math.eval(answer),
+            equation : ''
+        });
     }
  
-    
-    
+    clear = () => {
+
+        let equ = this.state.equation;
+        const eq = equ.slice(0, equ.length-1);
+        let answer =this.makeValid(eq);
+        if(answer==='')
+            this.setState({
+                result : '',
+                equation : '',
+            });
+        else    
+            this.setState({
+                result : math.eval(answer),
+                equation : eq
+            });
+        
+    }
+
+    makeValid= (eq) => {
+        
+        let answer = '';
+        
+            if(eq.endsWith('/')||eq.endsWith('*')||eq.endsWith('-')||eq.endsWith('+') )
+                answer = eq.slice(0, eq.length-1);
+            else
+                answer = eq;
+        
+        return answer;
+    }
+
     addToEquation= (val) => {
         
         const newEq = this.state.equation + val;
-        this.setState({equation : newEq});
-       
+        if(!isNaN(val))
+            this.setState({ 
+                equation : newEq,
+                result : math.eval(newEq)
+            });
+        else
+            this.setState({ 
+                equation : newEq
+            });
+
     }
-    
+
     render() {
         return(
-            <div style = {styles.centerWrapper}>
-                <Paper style={styles.paperStyle} elevation={1}>
+            <div style = {styles.paperWrapper} >
+                <Paper style={styles.paperStyle}  >
+                    <div style = {styles.displayWrapper}>
                     <Display equation={this.state.equation} result={this.state.result} />
-                    <ButtonGrid evaluate = {this.evaluate} onClick = {this.addToEquation}/>
+                    </div>
+                    <div style = {styles.buttonGridWrapper}>
+                    <ButtonGrid clear = {this.clear} evaluate = {this.handleEquals} onClick = {this.addToEquation}/>
+                    </div>
                     
                 </Paper>
             </div>
