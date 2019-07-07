@@ -1,34 +1,31 @@
-import React,{ Component }  from 'react'
-import SearchBar from './SearchBar';
-import Display from './Display';
+import React, { Component } from "react";
+import SearchBar from "./SearchBar";
+import SearchResultDisplay from "./SearchResultDisplay";
 
+class MovieSearch extends Component {
+  constructor(props) {
+    super(props);
+    this.initialState = {
+      searchTerm: "Harry"
+    };
+    this.state = this.initialState;
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-class MovieSearch extends Component{
-    
-    constructor(props) {
-        super(props);
-        this.initialState = {
-            searchTerm: '',
-        };
-        this.state = this.initialState;
+  handleSubmit = text => {
+    this.setState({
+      searchTerm: text
+    });
+  };
 
-    }
-
-    handleSubmit= (event) => {
-        this.setState({
-            searchTerm: event.target.value
-        });
-    }
-
-    render(){
-        const { searchTerm } = this.state;
-        return (
-            <div>
-                <SearchBar handelSubmit={this.handelSubmit}/>
-                <Display />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <SearchBar onChange={this.handleSubmit} />
+        <SearchResultDisplay searchTerm={this.state.searchTerm} />
+      </div>
+    );
+  }
 }
 
 export default MovieSearch;
