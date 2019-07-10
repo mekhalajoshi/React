@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import MovieDetails from './MovieDetails';
-import { Card, CardMedia, CardActionArea, CardContent, Typography, Button, } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, CardContent, Typography, } from '@material-ui/core';
 
 const styles = {
   Card: {
     width: '250px',
   },
   CardMedia: {
-    width: '250px',
-    height: '350px',
+    width: '100%',
+    height: '100%',
   },
   CardContent: {
     padding: '5px',
@@ -51,37 +51,35 @@ export default class MovieCard extends Component {
           style={styles.Card}
         >
           <CardActionArea
-
+            onClick={this.handleClickToggle}
           >
-            <Button onClick={this.handleClickToggle}>
-              <CardMedia
-                style={styles.CardMedia}
-                component="img"
-                alt="Contemplative Reptile"
-                image="https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg"
-                title="Contemplative Reptile"
+            <CardMedia
+              style={styles.CardMedia}
+              component="img"
+              alt={this.props.title}
+              image={this.props.poster}
+              title={this.props.title}
+            />
+            <CardContent
+              style={styles.CardContent}
+            >
+              <Typography
+                style={styles.Typography}
+                gutterBottom
+                variant="subtitle1" >
+                {this.props.title}
+              </Typography>
+            </CardContent>
 
-              />
-              <CardContent
-                style={styles.CardContent}
-              >
-                <Typography
-                  style={styles.Typography}
-                  gutterBottom
-                  variant="subtitle1" >
-                  LizardLizardLizardLizardLizardLizardLizard
-          </Typography>
-              </CardContent>
-            </Button>
             <MovieDetails
               open={this.state.open}
               onClose={this.handleClickToggle}
-              key={movie.imdbID}
-              title={movie.Title}
-              poster={movie.Poster}
+              key={this.props.imdbID}
+              title={this.props.title}
+              poster={this.props.poster}
+              year={this.props.year}
+              id={this.props.imdbID}
               plot={movie.Plot}
-              year={movie.Year}
-              id={movie.imdbID}
               actors={movie.Actors}
             />
           </CardActionArea>
