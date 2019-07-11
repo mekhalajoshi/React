@@ -6,6 +6,7 @@ import { getMoviesByTitle } from '../api/getOmdbData.js';
 const styles = {
   GridContainer: {
     padding: '20px',
+    margin: 'auto',
   },
 }
 
@@ -38,17 +39,16 @@ export default class MovieCardGrid extends Component {
       <div>
         <Grid
           container
-          justify="center"
           spacing={3}
           style={styles.GridContainer}
         >
           <Grid item xs={12}>
             {this.props.searchTerm}
           </Grid>
-          <Grid item  >
 
-            {this.state.movies.map(movie => {
-              return (
+          {this.state.movies.map(movie => {
+            return (
+              <Grid item style={{ marginBottom: '10px' }} >
                 <MovieCard
                   key={movie.imdbID}
                   title={movie.Title}
@@ -56,9 +56,10 @@ export default class MovieCardGrid extends Component {
                   year={movie.Year}
                   id={movie.imdbID}
                 />
-              );
-            })}
-          </Grid>
+              </Grid>
+            );
+          })}
+
         </Grid>
       </div>
     );

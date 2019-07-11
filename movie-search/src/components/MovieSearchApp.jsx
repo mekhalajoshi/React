@@ -10,7 +10,7 @@ export default class MovieSearchApp extends Component {
         super(props);
 
         this.state = {
-            searchTerm: 'move'
+            searchTerm: 'happy'
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);

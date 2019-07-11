@@ -5,10 +5,16 @@ import { Card, CardMedia, CardActionArea, CardContent, Typography, } from '@mate
 const styles = {
   Card: {
     width: '250px',
+    height: '400px',
+    margin: 'auto',
+
   },
   CardMedia: {
-    width: '100%',
+    width: 'auto',
     height: '100%',
+    maxHeight: '350px',
+    maxWidth: '250px',
+    margin: 'auto'
   },
   CardContent: {
     padding: '5px',
