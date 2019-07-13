@@ -1,36 +1,63 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import SearchBar from './SearchBar';
-import MovieCardGrid from './MovieCardGrid';
-import { getMoviesByTitle } from '../api/getOmdbData.js';
-
+import React, { Component } from 'react'
+import Header from './Header'
+import SearchBar from './SearchBar'
+import MovieCardGrid from './MovieCardGrid'
+import { getMoviesByTitle } from '../api/getOmdbData.js'
 
 export default class MovieSearchApp extends Component {
-    constructor(props) {
-        super(props);
+  constructor (props) {
+    super(props)
 
-        this.state = {
-            searchTerm: 'happy'
-        }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      searchTerm: 'happy',
+      mymovies: []
     }
-    handleChange = text => {
-        this.setState({
-            searchTerm: text
-        });
-    };
-    handleSubmit = text => {
-        getMoviesByTitle(text)
-    };
-    render() {
-        return (
-            <div>
-                <Header />
-                <SearchBar onSubmit={this.handleSubmit} onChange={this.handleChange} />
-                <MovieCardGrid searchTerm={this.state.searchTerm} />
-            </div>
-        );
-    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
+  async componentDidMount () {
+    const m = await getMoviesByTitle(this.state.searchTerm)
+    this.setState({
+      mymovies: m
+    })
+    console.log('MovieSearchApp mymovies    :' + this.state.mymovies)
+  }
+
+  handleChange = text => {
+    this.setState({
+      searchTerm: text
+    })
+
+    // console.log(this.state.mymovies);
+  };
+
+  async handleSubmit () {
+    const temp = await getMoviesByTitle(this.state.searchTerm)
+    this.setState({
+      mymovies: temp
+    })
+
+    // console.log(this.state.mymovies);
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //     if (this.state.searchTerm !== this.nextState.searchTerm) {
+  //         return false;
+  //     }
+
+  //     return true;
+  // }
+
+  render () {
+    return (
+      <div>
+        <Header />
+        <SearchBar onSubmit={this.handleSubmit} onChange={this.handleChange} />
+        <MovieCardGrid
+          mymovies={this.state.mymovies}
+        />
+      </div>
+    )
+  }
 }

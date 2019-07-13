@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import MovieDetails from './MovieDetails';
-import { Card, CardMedia, CardActionArea, CardContent, Typography, } from '@material-ui/core';
+import React, { Component } from 'react'
+import MovieDetails from './MovieDetails'
+import { Card, CardMedia, CardActionArea, CardContent, Typography } from '@material-ui/core'
 
 const styles = {
   Card: {
     width: '250px',
     height: '400px',
-    margin: 'auto',
+    margin: 'auto'
 
   },
   CardMedia: {
@@ -17,40 +17,41 @@ const styles = {
     margin: 'auto'
   },
   CardContent: {
-    padding: '5px',
+    padding: '5px'
   },
   Typography: {
     margin: 0,
-    overflowWrap: 'break-word',
+    overflowWrap: 'break-word'
   }
 }
 
 const movie = {
-  Title: "Rogue One: A Star Wars Story",
-  Year: "2016",
-  imdbID: "tt3748528",
-  Type: "movie",
-  Poster: "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg",
-  Plot: "The daughter of an Imperial scientist joins the Rebel Alliance in a risky move to steal the Death Star plans.",
-  Actors: "Felicity Jones, Diego Luna, Alan Tudyk, Donnie Yen",
+  Title: 'Rogue One: A Star Wars Story',
+  Year: '2016',
+  imdbID: 'tt3748528',
+  Type: 'movie',
+  Poster: 'https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg',
+  Plot: 'The daughter of an Imperial scientist joins the Rebel Alliance in a risky move to steal the Death Star plans.',
+  Actors: 'Felicity Jones, Diego Luna, Alan Tudyk, Donnie Yen'
 }
 
 export default class MovieCard extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
       open: false
     }
   }
+
   handleClickToggle = () => {
     this.setState({
       open: !this.state.open
 
-    });
+    })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <Card
@@ -92,8 +93,7 @@ export default class MovieCard extends Component {
 
         </Card>
 
-
       </div>
-    );
+    )
   }
 }

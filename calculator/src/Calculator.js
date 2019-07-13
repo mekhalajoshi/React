@@ -6,12 +6,7 @@ import ButtonGrid from './ButtonGrid';
 import {styles} from './Style';
 import * as math from 'mathjs';
 
-
-
-
 export default class Calculator extends Component {
-
-
     constructor(){
         super();
 

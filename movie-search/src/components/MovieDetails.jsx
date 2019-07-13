@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Dialog, Grid, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import React, { Component } from 'react'
+import { Dialog, Grid, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 
 export default class MovieDetails extends Component {
-  render() {
+  render () {
     return (
       <div>
         <Dialog
@@ -26,7 +26,7 @@ export default class MovieDetails extends Component {
             <Grid
               item
               xs={9}
-              style={{ flexGrow: 2, margin: 'auto', }}
+              style={{ flexGrow: 2, margin: 'auto' }}
             >
               <DialogTitle >
                 {this.props.title} ({this.props.year})
@@ -42,9 +42,6 @@ export default class MovieDetails extends Component {
           </Grid>
         </Dialog>
       </div>
-    );
+    )
   }
-
 }
-
-
