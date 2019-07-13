@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Search from './Search'; 
+import React, { Component } from 'react'
+import Search from './Search'
 
 export default class Header extends Component {
-  render() {
+  render () {
     return (
       <div>
         Header
         <Search />
       </div>
-    );
+    )
   }
 }

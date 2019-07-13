@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Search extends Component {
-  render() {
+  render () {
     return (
       <div>
         Search
       </div>
-    );
+    )
   }
 }

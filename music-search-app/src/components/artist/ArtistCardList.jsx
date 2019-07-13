@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import ArtistCard from './ArtistCard';
+import React, { Component } from 'react'
+import ArtistCard from './ArtistCard'
 
 export default class ArtistCardList extends Component {
-  render() {
+  render () {
     return (
       <div>
         ArtistCardList
         <ArtistCard />
       </div>
-    );
+    )
   }
 }
