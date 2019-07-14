@@ -1,0 +1,7 @@
+const ActionTypes = {
+  GET_ARTIST_LIST: 'GET_ARTIST_LIST',
+  ARTIST_LIST_SUCCESS: 'ARTIST_LIST_SUCCESS',
+  ARTIST_LIST_FAIURE: 'ARTIST_LIST_FAIURE'
+}
+
+export default ActionTypes

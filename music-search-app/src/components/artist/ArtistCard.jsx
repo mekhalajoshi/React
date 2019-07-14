@@ -10,13 +10,13 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = {
   width: '150px',
-  height: '200px'
+  height: 'auto'
 }
 
-// TODO: Add overflow to content
 export default class ArtistCard extends Component {
   render () {
     return (
+
       <Card style={useStyles} >
         <CardActionArea style={{ padding: '5px' }}>
           <CardMedia
@@ -27,7 +27,7 @@ export default class ArtistCard extends Component {
             title="Contemplative Reptile"
           />
           <CardContent style={{ padding: '0' }}>
-            <Typography gutterBottom variant="subtitle1">
+            <Typography variant="subtitle1">
               Sting
             </Typography>
           </CardContent>
@@ -38,7 +38,7 @@ export default class ArtistCard extends Component {
 }
 
 ArtistCard.propTypes = {
-  idArtist: PropTypes.string.isRequired,
-  strArtist: PropTypes.string.isRequired,
-  strArtistThumb: PropTypes.string.isRequired
+  idArtist: PropTypes.string,
+  strArtist: PropTypes.string,
+  strArtistThumb: PropTypes.string
 }

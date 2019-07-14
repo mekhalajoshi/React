@@ -4,9 +4,10 @@ import ArtistCardDetail from './artist/ArtistCardDetail'
 
 export default class Content extends Component {
   render () {
+    console.log()
     return (
       <div>
-        Content
+        <h3>Artists</h3>
         <ArtistCardList />
         <ArtistCardDetail />
       </div>
