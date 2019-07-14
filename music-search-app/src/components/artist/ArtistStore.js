@@ -10,6 +10,7 @@ const CHANGE_EVENT = 'change'
 
 // Store instances/variables
 let movies = ''
+let details = ''
 
 const ArtistStore = assign({}, EventEmitter.prototype, {
   // Public functions the views can see
@@ -31,6 +32,10 @@ const ArtistStore = assign({}, EventEmitter.prototype, {
   // View can retrieve specific values that store manages
   getArtistList () {
     return movies
+  },
+
+  getArtistDetails () {
+    return details
   }
 
 })
@@ -39,7 +44,6 @@ ArtistStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
     case ActionTypes.GET_ARTIST_LIST:
       console.log(`Store invoked ${action}`)
-
       // Take action - Make API call and update state
       ArtistWebAPIUtils.getMoviesLists(action.searchText)
       ArtistStore.emitChange()
@@ -52,6 +56,20 @@ ArtistStore.dispatchToken = AppDispatcher.register((action) => {
       movies = action.error // update store instance
       ArtistStore.emitChange()
       break
+    case ActionTypes.GET_ARTIST_DETAILS:
+      // Take action - Make API call and update state
+      ArtistWebAPIUtils.getMoviesDetails(action.searchText)
+      ArtistStore.emitChange()
+      break
+    case ActionTypes.ARTIST_DETAILS_SUCCESS:
+      details = action.data // update store instance
+      ArtistStore.emitChange()
+      break
+    case ActionTypes.ARTIST_DETAILS_FAILURE:
+      details = action.error // update store instance
+      ArtistStore.emitChange()
+      break
+
     default:
     // do nothing
   }

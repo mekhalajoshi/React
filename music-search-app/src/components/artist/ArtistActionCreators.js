@@ -21,6 +21,26 @@ const ArtistActionCreators = {
       type: 'ARTIST_LIST_FAILURE',
       error // FAILURE
     })
+  },
+
+  getArtistDetails (searchText) {
+    AppDispatcher.dispatch({
+      type: 'GET_ARTIST_DETAILS',
+      searchText // Sting
+    })
+  },
+  successArtistDetails (data) {
+    AppDispatcher.dispatch({
+      type: 'ARTIST_DETAILS_SUCCESS',
+      data // SUCCESS
+    })
+  },
+
+  failureArtistDetails (error) {
+    AppDispatcher.dispatch({
+      type: 'ARTIST_DETAILS_FAILURE',
+      error // FAILURE
+    })
   }
 
 }
