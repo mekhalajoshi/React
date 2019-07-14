@@ -99,6 +99,7 @@ const useStyles = {
   }
 }
 
+// Private function that gets values from store
 function getStateFromStore () {
   return {
     artistList: ArtistStore.getArtistList()
@@ -108,19 +109,24 @@ function getStateFromStore () {
 export default class ArtistCardList extends Component {
   constructor (props) {
     super(props)
+
+    // Set view's state based on store data
     this.state = getStateFromStore()
     this.onChange = this.onChange.bind(this)
   }
 
+  // Subscribe to store events on mount
   componentDidMount () {
     ArtistActionCreators.getArtistList('Sting')
     ArtistStore.addChangeListener(this.onChange)
   }
 
+  // Un-Subscribe to store events on un-mount
   componentWillUnmount () {
     ArtistStore.removeChangeListener(this.onChange)
   }
 
+  // Store uses this as callback fn when store is updated
   onChange () {
     this.setState(getStateFromStore())
   }
