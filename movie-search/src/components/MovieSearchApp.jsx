@@ -32,9 +32,10 @@ export default class MovieSearchApp extends Component {
     // console.log(this.state.mymovies);
   };
 
-  async handleSubmit () {
+  async handleSubmit (text) {
     const temp = await getMoviesByTitle(this.state.searchTerm)
     this.setState({
+      searchTerm: text,
       mymovies: temp
     })
 
