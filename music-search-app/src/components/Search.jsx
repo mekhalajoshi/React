@@ -23,9 +23,8 @@ export default class Search extends Component {
       <div>
         Search
 
-        <Paper style={useStyles.root} >
-          <IconButton style={useStyles.iconButton} aria-label="Menu">
-          </IconButton>
+        <Paper style={useStyles.root}>
+          <IconButton style={useStyles.iconButton} aria-label="Menu" />
           <InputBase
             style={useStyles.input}
             placeholder="Search Google Maps"

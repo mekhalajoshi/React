@@ -112,12 +112,13 @@ export default class ArtistCardList extends Component {
 
     // Set view's state based on store data
     this.state = getStateFromStore()
+    console.log(this.state.artistList)
     this.onChange = this.onChange.bind(this)
   }
 
   // Subscribe to store events on mount
   componentDidMount () {
-    ArtistActionCreators.getArtistList('Sting')
+    ArtistActionCreators.getArtistList('Coldplay')
     ArtistStore.addChangeListener(this.onChange)
   }
 
@@ -134,7 +135,9 @@ export default class ArtistCardList extends Component {
   render () {
     return (
       <div style={useStyles.root}>
+        HI
         {this.state.artistList}
+        hi
         <GridList style={useStyles.gridList}>
           {tileData.map(tile => (
             // TODO: Add map key
