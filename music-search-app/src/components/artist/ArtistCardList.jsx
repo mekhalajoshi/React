@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ArtistCard from './ArtistCard'
 import { GridList, GridListTile } from '@material-ui/core'
+import ArtistCard from './ArtistCard'
 import ArtistActionCreators from './ArtistActionCreators'
 
 import ArtistStore from './ArtistStore'
@@ -112,7 +112,6 @@ export default class ArtistCardList extends Component {
 
     // Set view's state based on store data
     this.state = getStateFromStore()
-    console.log(this.state.artistList)
     this.onChange = this.onChange.bind(this)
   }
 
@@ -133,16 +132,18 @@ export default class ArtistCardList extends Component {
   }
 
   render () {
+    const { artistList } = this.state
     return (
       <div style={useStyles.root}>
-        HI
-        {this.state.artistList}
-        hi
         <GridList style={useStyles.gridList}>
-          {tileData.map(tile => (
+          {/* {console.log(this.state.artistList)} */}
+          {artistList.map(tile => (
             // TODO: Add map key
-            <GridListTile style={useStyles.gridListTile} >
-              <ArtistCard />
+            <GridListTile style={useStyles.gridListTile}>
+              <ArtistCard 
+                strArtist={tile.strArtist} 
+                strArtistThumb={tile.strArtistThumb}
+              />
 
             </GridListTile>
           ))}

@@ -21,6 +21,7 @@ module.exports = {
     "rules": {
         "semi": ["error", "never"],
         "indent": ["error", 2],
+        "no-unused-vars": ["error", { "vars": "local" }],
         "quotes": ["error", "single"]
     }
 };

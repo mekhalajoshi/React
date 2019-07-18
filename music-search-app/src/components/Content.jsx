@@ -1,16 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ArtistCardList from './artist/ArtistCardList'
-import ArtistCardDetail from './artist/ArtistCardDetail'
+// import ArtistCardDetail from './artist/ArtistCardDetail'
+import AlbumCardList  from './album/AlbumCardList'
 
-export default class Content extends Component {
-  render () {
-    console.log()
-    return (
-      <div>
-        <h3>Artists</h3>
-        <ArtistCardList />
-        <ArtistCardDetail />
-      </div>
-    )
-  }
+// export default class Content extends Component {
+//   render () {
+//     return (
+      
+//     )
+//   }
+// }
+
+function Content(){
+  return(
+    <div>
+      <h3>Artists</h3>
+      <ArtistCardList />
+      <h3>Albums</h3>
+      <AlbumCardList />
+      {/* <ArtistCardDetail /> */}
+    </div>
+  )
 }
+
+export default Content

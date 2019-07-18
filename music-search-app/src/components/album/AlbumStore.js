@@ -2,19 +2,18 @@
 import { EventEmitter } from 'events'
 import assign from 'object-assign'
 
-import ArtistWebAPIUtils from './ArtistWebAPIUtils'
+import AlbumWebAPIUtils from './AlbumWebAPIUtils'
 import AppDispatcher from '../../utils/AppDispatcher'
 import ActionTypes from '../../utils/ActionTypes'
-import ArtistActionCreators from './ArtistActionCreators'
 
 
 const CHANGE_EVENT = 'change'
 
 // Store instances/variables
-let artists = []
+let albums = []
 let details = []
 
-const ArtistStore = assign({}, EventEmitter.prototype, {
+const AlbumStore = assign({}, EventEmitter.prototype, {
   // Public functions the views can see
 
   emitChange() {
@@ -33,48 +32,48 @@ const ArtistStore = assign({}, EventEmitter.prototype, {
   },
 
   // View can retrieve specific values that store manages
-  getArtistList() {
-    return artists
+  getAlbumList() {
+    return albums
   },
 
-  getArtistDetails() {
+  getAlbumDetails() {
     return details
   },
 
 })
 
-ArtistStore.dispatchToken = AppDispatcher.register((action) => {
+AlbumStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
-  case ActionTypes.GET_ARTIST_LIST:
-    console.log(`Store invoked ${action}`)
+  case ActionTypes.GET_ALBUM_LIST:
+    // console.log(`Store invoked ${action}`)
     // Take action - Make API call and update state
-    ArtistWebAPIUtils.getArtistLists(action.searchText)
-    ArtistStore.emitChange()
+    AlbumWebAPIUtils.getAlbumLists(action.searchText)
+    AlbumStore.emitChange()
     break
-  case ActionTypes.ARTIST_LIST_SUCCESS:
-    artists = action.data // update store instance
-    ArtistStore.emitChange()
+  case ActionTypes.ALBUM_LIST_SUCCESS:
+    albums = action.data // update store instance
+    AlbumStore.emitChange()
     break
-  case ActionTypes.ARTIST_LIST_FAILURE:
-    artists = action.error // update store instance
-    ArtistStore.emitChange()
+  case ActionTypes.ALBUM_LIST_FAILURE:
+    albums = action.error // update store instance
+    AlbumStore.emitChange()
     break
-  case ActionTypes.GET_ARTIST_DETAILS:
+  case ActionTypes.GET_ALBUM_DETAILS:
     // Take action - Make API call and update state
-    ArtistWebAPIUtils.getArtistDetails(action.searchText)
-    ArtistStore.emitChange()
+    AlbumWebAPIUtils.getAlbumDetails(action.searchText)
+    AlbumStore.emitChange()
     break
-  case ActionTypes.ARTIST_DETAILS_SUCCESS:
+  case ActionTypes.ALBUM_DETAILS_SUCCESS:
     details = action.data // update store instance
-    ArtistStore.emitChange()
+    AlbumStore.emitChange()
     break
-  case ActionTypes.ARTIST_DETAILS_FAILURE:
+  case ActionTypes.ALBUM_DETAILS_FAILURE:
     details = action.error // update store instance
-    ArtistStore.emitChange()
+    AlbumStore.emitChange()
     break
   default:
     // do nothing
   }
 })
 
-export default ArtistStore
+export default AlbumStore

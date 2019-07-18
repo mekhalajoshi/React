@@ -5,7 +5,7 @@ const ArtistActionCreators = {
   getArtistList(searchText) {
     AppDispatcher.dispatch({
       type: ActionTypes.GET_ARTIST_LIST,
-      searchText, // Sting
+      searchText, // Coldplay
     })
   },
 

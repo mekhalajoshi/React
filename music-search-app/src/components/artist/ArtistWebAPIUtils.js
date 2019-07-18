@@ -10,7 +10,7 @@ const ArtistWebAPIUtils = {
       type: 'GET',
 
       success(data) {
-        console.log(data.artists)
+        // console.log(data.artists)
         ArtistActionCreators.successArtistList(data.artists)
       },
 
