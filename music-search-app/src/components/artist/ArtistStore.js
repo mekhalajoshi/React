@@ -5,7 +5,7 @@ import assign from 'object-assign'
 import ArtistWebAPIUtils from './ArtistWebAPIUtils'
 import AppDispatcher from '../../utils/AppDispatcher'
 import ActionTypes from '../../utils/ActionTypes'
-import ArtistActionCreators from './ArtistActionCreators'
+// import ArtistActionCreators from './ArtistActionCreators'
 
 
 const CHANGE_EVENT = 'change'
@@ -46,7 +46,7 @@ const ArtistStore = assign({}, EventEmitter.prototype, {
 ArtistStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
   case ActionTypes.GET_ARTIST_LIST:
-    console.log(`Store invoked ${action}`)
+    // console.log(`Store invoked ${action}`)
     // Take action - Make API call and update state
     ArtistWebAPIUtils.getArtistLists(action.searchText)
     ArtistStore.emitChange()

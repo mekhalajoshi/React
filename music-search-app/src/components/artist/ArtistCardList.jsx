@@ -5,100 +5,6 @@ import ArtistActionCreators from './ArtistActionCreators'
 
 import ArtistStore from './ArtistStore'
 
-const tileData = [
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  },
-  {
-    img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
-    title: 'Contemplative Reptile'
-  }
-]
-
-const useStyles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    overflow: 'hidden',
-    marginTop: '20px'
-  },
-  gridList: {
-    flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
-  },
-  title: {
-  },
-  titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
-  },
-  gridListTile: {
-    width: '160px'
-  }
-}
-
 // Private function that gets values from store
 function getStateFromStore () {
   return {
@@ -117,7 +23,7 @@ export default class ArtistCardList extends Component {
 
   // Subscribe to store events on mount
   componentDidMount () {
-    ArtistActionCreators.getArtistList('Coldplay')
+    ArtistActionCreators.getArtistList('')
     ArtistStore.addChangeListener(this.onChange)
   }
 
@@ -151,5 +57,98 @@ export default class ArtistCardList extends Component {
 
       </div>
     )
+  }
+}
+// const tileData = [
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   },
+//   {
+//     img: 'https://www.theaudiodb.com/images/media/artist/thumb/wuprus1340023845.jpg',
+//     title: 'Contemplative Reptile'
+//   }
+// ]
+
+const useStyles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    marginTop: '20px'
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)'
+  },
+  title: {
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+  },
+  gridListTile: {
+    width: '160px'
   }
 }

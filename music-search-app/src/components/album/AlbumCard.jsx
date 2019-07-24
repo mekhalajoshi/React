@@ -6,31 +6,33 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
+import Slide from '@material-ui/core/Slide'
+
 
 function AlbumCard (props) {
-    const {strAlbumThumb, strAlbum,} = props
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+  const {strAlbumThumb, strAlbum,} = props
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
   
-    function handleClickOpen() {
-      setOpen(true);
-    }
+  function handleClickOpen() {
+    setOpen(true)
+  }
   
-    function handleClose() {
-      setOpen(false);
-    }
-    return (
-      <div>
+  function handleClose() {
+    setOpen(false)
+  }
+  return (
+    <div>
       <Card style={useStyles.card}>
         <CardActionArea 
-        onClick={handleClickOpen}
-        style={{ padding: '5px' }}
+          onClick={handleClickOpen}
+          style={{ padding: '5px' }}
         >
           <CardMedia
             className="album-card__media"
@@ -46,25 +48,27 @@ function AlbumCard (props) {
           </CardContent>
         </CardActionArea>
       </Card>
+
       <Dialog 
-      fullScreen open={open} 
-      onClose={handleClose} 
-      // TransitionComponent={Transition}
+        fullScreen
+        open={open} 
+        onClose={handleClose}
+        TransitionComponent={Transition}
       >
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="Close">
-                <CloseIcon />
-              </IconButton>
-              <Typography variant="h6" className={classes.title}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="Close">
+              <CloseIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
               {strAlbum}
-              </Typography>
-            </Toolbar>
-          </AppBar>
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </Dialog>
   
-  </div>
-    )
+    </div>
+  )
 }
 export default  AlbumCard 
 
@@ -73,19 +77,16 @@ AlbumCard.propTypes = {
   strAlbumThumb: PropTypes.string.isRequired
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    appBar: {
-      position: 'relative',
-    },
-    card:{
-      width: '150px',
-      height: 'auto',
-    },
-    title: {
-      marginLeft: theme.spacing(2),
-      flex: 1,
-    },
-  }),
-);
+const useStyles = makeStyles(theme => ({
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+}))
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />
+})

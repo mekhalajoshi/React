@@ -24,7 +24,7 @@ export default class AlbumCardList extends Component{
 
   // Subscribe to store events on mount
   componentDidMount () {
-    AlbumActionCreators.getAlbumList('111239')
+    AlbumActionCreators.getAlbumList('')
     AlbumStore.addChangeListener(this.onAlbumChange)
   }
 

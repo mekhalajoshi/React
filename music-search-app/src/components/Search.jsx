@@ -1,7 +1,29 @@
-import React, { Component } from 'react';
-import { Paper, InputBase, IconButton } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import React from 'react'
+import { Paper, InputBase, IconButton } from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search'
 
+
+const Search = () => {
+  return (
+    <div>
+        Search
+      <Paper style={useStyles.root}>
+        <IconButton style={useStyles.iconButton} aria-label="Menu" />
+        <InputBase
+          style={useStyles.input}
+          placeholder="Search Artist"
+          inputProps={{ 'aria-label': 'Search Artist' }}
+          
+        />
+        <IconButton style={useStyles.iconButton} aria-label="Search">
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+    </div>
+  )
+}
+export default Search
+ 
 const useStyles = {
   root: {
     padding: '2px 4px',
@@ -16,25 +38,4 @@ const useStyles = {
   iconButton: {
     padding: 10,
   },
-};
-export default class Search extends Component {
-  render() {
-    return (
-      <div>
-        Search
-
-        <Paper style={useStyles.root}>
-          <IconButton style={useStyles.iconButton} aria-label="Menu" />
-          <InputBase
-            style={useStyles.input}
-            placeholder="Search Google Maps"
-            inputProps={{ 'aria-label': 'Search Google Maps' }}
-          />
-          <IconButton style={useStyles.iconButton} aria-label="Search">
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-      </div>
-    );
-  }
 }

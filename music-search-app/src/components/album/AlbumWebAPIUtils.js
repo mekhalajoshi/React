@@ -3,14 +3,15 @@ import AlbumActionCreators from './AlbumActionCreators'
 
 const AlbumWebAPIUtils = {
   getAlbumLists(searchText) {
-    const uri = 'https://theaudiodb.com/api/v1/json/1/album.php?i='.concat(searchText === '' ? '111239' : searchText)
+    if (searchText === '' || searchText === undefined) searchText = '111239'
+    const uri = 'https://theaudiodb.com/api/v1/json/1/album.php?i='.concat(searchText)
 
     $.ajax({
       url: uri,
       type: 'GET',
 
       success(data) {
-        console.log(data.album)
+        // console.log(data.album)
         AlbumActionCreators.successAlbumList(data.album)
       },
 
