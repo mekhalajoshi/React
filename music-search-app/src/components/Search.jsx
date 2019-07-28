@@ -10,6 +10,7 @@ class Search extends Component {
     super(props)
 
     this.onChange = this.onChange.bind(this)
+    this.onKeyPressEnter = this.onKeyPressEnter.bind(this)
     this.state = {
       searchText: ''
     }
@@ -21,7 +22,20 @@ class Search extends Component {
     })
   }
 
+  onKeyPressEnter(event) {
+    const { searchText } = this.state
+    const { onInputChange } = this.props
+
+    if (event.keyCode === 13 || event.which === 13) {
+      event.preventDefault() // Ensure it is only this code that run
+      onInputChange(searchText)
+    }
+  }
+
   render() {
+    const { searchText } = this.state
+    const { onInputChange } = this.props
+
     return (
       <div className="artist-card__margin">
         <div>
@@ -32,6 +46,9 @@ class Search extends Component {
               aria-describedby="basic-addon2"
               onChange={e => {
                 this.onChange(e)
+              }}
+              onKeyPress={e => {
+                this.onKeyPressEnter(e)
               }}
             />
 
@@ -76,7 +93,7 @@ class Search extends Component {
               <Button
                 variant="outline-secondary"
                 onClick={() => {
-                  this.props.onInputChange(this.state.searchText)
+                  onInputChange(searchText)
                 }}
               >
 								Search

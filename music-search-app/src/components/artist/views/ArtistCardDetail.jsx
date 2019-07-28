@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ArtistActionCreators from './ArtistActionCreators'
+import ArtistActionCreators from '../ArtistActionCreators'
 
-import ArtistStore from './ArtistStore'
+import ArtistStore from '../ArtistStore'
 
 // Private function that gets values from store
-function getStateFromStore () {
+function getStateFromStore() {
   return {
     artistDetails: ArtistStore.getArtistDetails()
   }
 }
 
 export default class ArtistCardDetail extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     // Set view's state based on store data
@@ -21,26 +21,26 @@ export default class ArtistCardDetail extends Component {
   }
 
   // Subscribe to store events on mount
-  componentDidMount () {
+  componentDidMount() {
     ArtistActionCreators.getArtistDetails('Sting')
     ArtistStore.addChangeListener(this.onChange)
   }
 
   // Un-Subscribe to store events on un-mount
-  componentWillUnmount () {
+  componentWillUnmount() {
     ArtistStore.removeChangeListener(this.onChange)
   }
 
   // Store uses this as callback fn when store is updated
-  onChange () {
+  onChange() {
     this.setState(getStateFromStore())
   }
 
-  render () {
+  render() {
     return (
       <div>
         {this.state.artistDetails}
-        ArtistCardDetail
+				ArtistCardDetail
       </div>
     )
   }
