@@ -11,9 +11,14 @@ import AlbumCardList from './album/AlbumCardList'
 //   }
 // }
 
-function Content() {
+const Content = props => {
+  const searchResults = props.searchText
+    ? `Searching for ${props.searchText}`
+    : null
+
   return (
     <div>
+      {searchResults}
       <h3>Artists</h3>
       <ArtistCardList />
       <h3>Albums</h3>

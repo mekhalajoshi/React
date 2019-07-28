@@ -11,3 +11,11 @@
 .artist-card__content {
     padding: 0;
 }
+
+.artist-card__margin {
+    margin: 20px;
+}
+
+.artist-width {
+    width: 100px;
+}

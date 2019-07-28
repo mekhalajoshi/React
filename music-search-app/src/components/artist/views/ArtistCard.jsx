@@ -1,6 +1,4 @@
 import React from 'react'
-import './artist.css'
-
 import PropTypes from 'prop-types'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -15,14 +13,13 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Slide from '@material-ui/core/Slide'
 
+import './artist.css'
 
-
-function ArtistCard (props) {
-  const {strArtistThumb, strArtist,} = props
+function ArtistCard(props) {
+  const { strArtistThumb, strArtist } = props
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
 
-  
   function handleClickOpen() {
     setOpen(true)
   }
@@ -33,10 +30,7 @@ function ArtistCard (props) {
   return (
     <div>
       <Card style={useStyles.card}>
-        <CardActionArea 
-          onClick={handleClickOpen}
-          style={{ padding: '5px' }}
-        >
+        <CardActionArea onClick={handleClickOpen} style={{ padding: '5px' }}>
           <CardMedia
             className="artist-card__media"
             component="img"
@@ -45,22 +39,25 @@ function ArtistCard (props) {
             title={strArtist}
           />
           <CardContent style={{ padding: '0' }}>
-            <Typography variant="subtitle1">
-              {strArtist}
-            </Typography>
+            <Typography variant="subtitle1">{strArtist}</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-     
-      <Dialog 
+
+      <Dialog
         fullScreen
-        open={open} 
+        open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="Close">
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="Close"
+            >
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
@@ -69,11 +66,10 @@ function ArtistCard (props) {
           </Toolbar>
         </AppBar>
       </Dialog>
-
     </div>
   )
 }
-export default  ArtistCard 
+export default ArtistCard
 
 ArtistCard.propTypes = {
   strArtist: PropTypes.string.isRequired,
@@ -82,12 +78,12 @@ ArtistCard.propTypes = {
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    position: 'relative',
+    position: 'relative'
   },
   title: {
     marginLeft: theme.spacing(2),
-    flex: 1,
-  },
+    flex: 1
+  }
 }))
 
 const Transition = React.forwardRef(function Transition(props, ref) {
