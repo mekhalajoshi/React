@@ -1,41 +1,63 @@
 import React from 'react'
-import { Paper, InputBase, IconButton } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
+import Button from 'react-bootstrap/Button'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
-
-const Search = () => {
-  return (
+const Search = () => (
+  <div className="artist-card__margin">
     <div>
-        Search
-      <Paper style={useStyles.root}>
-        <IconButton style={useStyles.iconButton} aria-label="Menu" />
-        <InputBase
-          style={useStyles.input}
-          placeholder="Search Artist"
-          inputProps={{ 'aria-label': 'Search Artist' }}
-          
+      <InputGroup className="mb-3">
+        <FormControl
+          placeholder="Search Artists, Albums or Tracks..."
+          aria-label="Search Artists, Albums or Tracks..."
+          aria-describedby="basic-addon2"
         />
-        <IconButton style={useStyles.iconButton} aria-label="Search">
-          <SearchIcon />
-        </IconButton>
-      </Paper>
+
+        <DropdownButton
+          as={InputGroup.Append}
+          variant="outline-secondary"
+          title="Filter"
+          id="input-group-dropdown-2"
+        >
+          <Dropdown.Item
+            onClick={() => {
+              console.log('All selected')
+            }}
+            active
+          >
+						All
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              console.log('Artists selected')
+            }}
+          >
+						Artists
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              console.log('Albums selected')
+            }}
+          >
+						Albums
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              console.log('Tracks selected')
+            }}
+          >
+						Tracks
+          </Dropdown.Item>
+        </DropdownButton>
+
+        <InputGroup.Append>
+          <Button variant="outline-secondary">Search</Button>
+        </InputGroup.Append>
+      </InputGroup>
     </div>
-  )
-}
+  </div>
+)
+
 export default Search
- 
-const useStyles = {
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    width: 400,
-  },
-  input: {
-    marginLeft: 8,
-    flex: 1,
-  },
-  iconButton: {
-    padding: 10,
-  },
-}

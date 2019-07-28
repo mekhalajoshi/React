@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { GridList, GridListTile } from '@material-ui/core'
 import ArtistCard from './ArtistCard'
-import ArtistActionCreators from './ArtistActionCreators'
+import ArtistActionCreators from '../ArtistActionCreators'
 
-import ArtistStore from './ArtistStore'
+import ArtistStore from '../ArtistStore'
 
 // Private function that gets values from store
 function getStateFromStore () {
