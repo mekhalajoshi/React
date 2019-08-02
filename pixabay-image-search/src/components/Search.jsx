@@ -1,49 +1,58 @@
-import React from 'react'
-import Paper from '@material-ui/core/Paper'
-import InputBase from '@material-ui/core/InputBase'
-import IconButton from '@material-ui/core/IconButton'
-import SearchIcon from '@material-ui/icons/Search'
+import React, { useState, } from 'react'
 import PropTypes from 'prop-types'
+
+import { TextField, IconButton,}from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search'
 import { makeStyles, } from '@material-ui/core/styles'
-// import Link from '@material-ui/core/Link'
-// import Typography from '@material-ui/core/Typography'
-// import { makeStyles, } from '@material-ui/core/styles'
-// import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-// import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-// import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 
-const Search = () => {
+const Search = (props) => {
   const classes = useStyles()
- 
+  const [searchString, setSearchString,] = useState('')
+  
+  const onTextChange = (event) => {
+    setSearchString(event.target.value)
+  }
+
+  const onSubmit = () => {
+    props.onChange(searchString)
+  }
+
+  const onKeyPressEnter=(event)=> {
+    if (event.keyCode === 13 || event.which === 13) {
+      event.preventDefault() // Ensure it is only this code that run
+      setSearchString('')
+      props.onChange(searchString)
+    }
+  }
+
   return (
     <div>
-      <div>
-        <Paper className={classes.Paper}>
-          <InputBase
-            className={classes.InputBase}
-            placeholder="Movie Search App"
-            inputProps={{ 'aria-label': 'Movie Search App', }}
-            //TODO: Add onChange to implement search functionality
-            // onChange={this.onTextChange}
-          />
-          <IconButton
-            //TODO: Add onClick to add search functionality
-            // onClick={this.onSubmit}
-          >
-            <SearchIcon />
-          </IconButton>
-          
-        </Paper>
+      <div className={classes.Paper}>
         
-      
+        <TextField
+          value={searchString}
+          onChange={onTextChange}
+          onKeyPress={onKeyPressEnter}
+
+          id="outlined-with-placeholder"
+          label="Search for an Image"
+          placeholder="Eg. apple"
+          className={classes.textField}
+          margin="normal"
+          variant="outlined"
+          fullWidth
+        />
+       
+        <IconButton onClick={onSubmit}>
+          <SearchIcon />
+        </IconButton>
       </div>
     </div>
   )
 }
+
 const useStyles = makeStyles( ()=> ({
-  
   Paper: {
     margin: '10px',
     paddingLeft: '10px',
@@ -55,7 +64,6 @@ const useStyles = makeStyles( ()=> ({
     flex: 1,
   },
 }))
-
 
 Search.propTypes = {
   onChange: PropTypes.func,
