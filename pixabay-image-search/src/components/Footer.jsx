@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <div>
-      <AppBar position="static" color="primary" className={classes.appBar}>
+      <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
           <Link href={'https://github.com/mekhalajoshi/React'} className={classes.link}>
             View on Github
@@ -24,11 +24,8 @@ const Footer = () => {
 const useStyles = makeStyles(() => ({
   
   appBar: {
-    top: '10px',
-    bottom: '10px',
-    left: '10px',
-    right: '10px',
-    width:'auto',
+    top: 'auto',
+    bottom: 0,
   },
  
   link: {

@@ -4,6 +4,8 @@ import Search from './components/Search'
 import Content from './components/Content'
 import Footer from './components/Footer'
 import axios from 'axios'
+import 'lit-element-web-components'
+import 'my-start-lit-element'
 
 function App() {
   const [searchText, setSearchText,] = useState('')
@@ -16,7 +18,7 @@ function App() {
   useEffect(() => {
     let text=''
     searchText === '' || searchText === undefined
-      ? text = 'Toronto'
+      ? text = 'toronto'
       : text=searchText
     const PATH_BASE = 'https://pixabay.com/api/?key=12970239-13b055146ebc319ac662bb6a6&image_type=photo&pretty=true&per_page=50'
     const PARAM_SEARCH_TITLE = '&q='
@@ -31,6 +33,8 @@ function App() {
   return (
 
     <div >
+      {/* <start-lit-element></start-lit-element> */}
+      {/* <x-button name="lit-element-button"></x-button> */}
       <Header/>
       <Search onChange={onChange}/>
       <Content images={images} searchText={searchText}/>

@@ -15,6 +15,7 @@ const Search = (props) => {
   }
 
   const onSubmit = () => {
+    setSearchString('')
     props.onChange(searchString)
   }
 
