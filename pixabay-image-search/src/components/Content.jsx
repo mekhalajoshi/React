@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { makeStyles, } from '@material-ui/core/styles'
 
+
 import ImageGrid from './ImageGrid'
 import SearchTermDisplay from './SearchTermDisplay'
 
@@ -16,6 +17,7 @@ export default function Content(props) {
     <div className={classes.root}>
       <SearchTermDisplay searchResults={searchResults}/>
       <ImageGrid images={props.images}/>
+
     </div>
   )
 }
