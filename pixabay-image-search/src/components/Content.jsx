@@ -1,42 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {GridList,Typography,GridListTile,GridListTileBar,IconButton,Box,} from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core/styles'
-import ZoomIn from '@material-ui/icons/ZoomIn'
 
+
+import ImageGrid from './ImageGrid'
+import SearchTermDisplay from './SearchTermDisplay'
 
 export default function Content(props) {
   const classes = useStyles()
+  
   const searchResults = props.searchText
     ? `Searching for ${props.searchText}`
     : null
-  
   return (
     <div className={classes.root}>
-      <Typography variant='h5'>
-        <Box fontStyle="italic" fontFamily="Helvetica Neue">
-          {searchResults}
-        </Box>
-      </Typography>
-      <GridList cellHeight={200} spacing={1} cols={4} className={classes.gridList}>
-        {props.images.map(tile => (
-          <GridListTile key={tile.id} className={classes.img}>
-            <img src={tile.largeImageURL} alt={tile.tags} />
-            <GridListTileBar
-              title={tile.tags}
-              titlePosition="bottom"
-              actionIcon={
-                <IconButton aria-label={`star ${tile.tags}`} className={classes.icon}>
-                  <ZoomIn />
-                </IconButton>
-              }
-              actionPosition="right"
-              className={classes.titleBar}
-            />
-          </GridListTile>
-        ))}
-      </GridList>
+      <SearchTermDisplay searchResults={searchResults}/>
+      <ImageGrid images={props.images}/>
+
     </div>
   )
 }
